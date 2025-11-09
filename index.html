@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasa Desain Kreatif</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; }
+        header { background-color: #7D47A4; color: white; padding: 2rem; text-align: center; }
+        nav { background-color: #333; padding: 1rem; }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; }
+        nav li { margin: 0 1.5rem; }
+        nav a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        nav a:hover { color: #7D47A4; }
+        .hero { background-color: #f4f4f4; padding: 4rem 2rem; text-align: center; }
+        .btn { background-color: #7D47A4; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 5px; display: inline-block; transition: background-color 0.3s; }
+        .btn:hover { background-color: #7D47A4; }
+        section { padding: 3rem 2rem; text-align: center; }
+        .services { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 2rem; }
+        .service { width: 30%; min-width: 250px; margin: 1rem; padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .service:hover { transform: translateY(-5px); }
+        .portfolio-gallery { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+        .portfolio-gallery img { width: 300px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s; }
+        .portfolio-gallery img:hover { transform: scale(1.05); }
+        form { max-width: 500px; margin: 0 auto; text-align: left; }
+        input, textarea { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
+        footer { background-color: #333; color: white; text-align: center; padding: 1rem; }
+        /* Modal styles */
+        .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); }
+        .modal-content { margin: auto; display: block; width: 80%; max-width: 700px; animation: zoom 0.6s; }
+        @keyframes zoom { from {transform: scale(0)} to {transform: scale(1)} }
+        .close { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; }
+        .close:hover, .close:focus { color: #bbb; text-decoration: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Translation Services</h1>
+        <p>Mewujudkan ide Anda dengan desain yang menakjubkan.</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#services">Layanan</a></li>
+            <li><a href="#portfolio">Portofolio</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+    </nav>
+    <section id="home" class="hero">
+        <h2>Selamat Datang di Dunia Desain Kami</h2>
+        <p>Kami spesialis dalam desain grafis, desain web, dan branding untuk meningkatkan bisnis Anda.</p>
+        <a href="#contact" class="btn">Mulai Sekarang</a>
+    </section>
+    <section id="services">
+        <h2>Layanan Kami</h2>
+        <div class="services">
+            <div class="service">
+                <h3>Website</h3>
+                <p>Terjemahan Website dan Artikel</p>
+            </div>
+            <div class="service">
+                <h3>Film</h3>
+                <p>Subtitle Film dan Video</p>
+            </div>
+            <div class="service">
+                <h3>Bisnis</h3>
+                <p>Dokumen Bisnis dan Pengeditan Bahasa.</p>
+            </div>
+        </div>
+    </section>
+    <section id="portfolio">
+        <h2>Portofolio</h2>
+        <div class="portfolio-gallery">
+            <img src="foto translation.jpg" alt="Desain grafis untuk logo" onclick="openModal('foto translation.jpg')">
+            <img src="foto artikel.jpg" alt="Mockup situs web responsif" onclick="openModal('foto artikel.jpg')">
+            <img src="images/branding1.jpg" alt="Paket identitas merek" onclick="openModal('images/branding1.jpg')">
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Hubungi Kami</h2>
+        <p>Email: fitria.badriyani@gmail.com | Whatsapp: (+62) 831-3507-0365</p>
+        <form action="#" method="post">
+            <input type="text" placeholder="Nama Anda" required><br><br>
+            <input type="email" placeholder="Email Anda" required><br><br>
+            <textarea placeholder="Pesan Anda" required></textarea><br><br>
+            <button type="submit" class="btn">Kirim</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2025 Translation Services. PT. Talk2melater</p>
+    </footer>
+
+    <!-- Modal for image popup -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
