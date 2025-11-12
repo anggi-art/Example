@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Services</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; overflow-x: hidden; }
+        header { background-color: #7D47A4; color: white; padding: 2rem; text-align: center; position: relative; }
+        nav { background-color: #333; padding: 1rem; position: sticky; top: 0; z-index: 100; }
+        .hamburger { display: none; font-size: 30px; color: white; cursor: pointer; position: absolute; right: 1rem; top: 0.5rem; }
+        #nav-menu { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; }
+        #nav-menu li { margin: 0 1.5rem; }
+        #nav-menu a { color: white; text-decoration: none; font-weight: bold; transition: color 0.3s; }
+        #nav-menu a:hover { color: #7D47A4; }
+        .hero { background: linear-gradient(135deg, #f4f4f4, #e0f7fa); padding: 4rem 2rem; text-align: center; animation: fadeIn 1s ease-in; }
+        .btn { background-color: #7D47A4; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 5px; display: inline-block; transition: all 0.3s; }
+        .btn:hover { background-color: #45a049; transform: scale(1.05); }
+        section { padding: 3rem 2rem; text-align: center; opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        section.visible { opacity: 1; transform: translateY(0); }
+        .services { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 2rem; }
+        .service { width: 30%; min-width: 250px; margin: 1rem; padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .service:hover { transform: translateY(-5px); }
+        .portfolio-gallery { position: relative; overflow: hidden; width: 100%; max-width: 800px; margin: 0 auto; }
+        .slider { display: flex; transition: transform 0.5s ease; }
+        .slide { min-width: 100%; }
+        .slide img { width: 70%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); cursor: pointer; }
+        .slider-controls { text-align: center; margin-top: 1rem; }
+        .slider-controls button { background: #7D47A4; color: white; border: none; padding: 0.5rem 1rem; margin: 0 0.5rem; border-radius: 5px; cursor: pointer; }
+        form { max-width: 500px; margin: 0 auto; text-align: left; }
+        input, textarea { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; transition: border-color 0.3s; }
+        input:focus, textarea:focus { border-color: #7D47A4; outline: none; }
+        .error { color: red; font-size: 0.9rem; display: none; }
+        footer { background-color: #333; color: white; text-align: center; padding: 1rem; }
+        /* Modal */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); }
+        .modal-content { margin: auto; display: block; width: 70%; max-width: 715px; animation: zoom 0.6s; }
+        @keyframes zoom { from {transform: scale(0)} to {transform: scale(1)} }
+        .close { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; }
+        .close:hover { color: #bbb; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            #nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: #333; padding: 1rem 0; }
+            #nav-menu.active { display: flex; }
+            #nav-menu li { margin: 0.5rem 0; text-align: center; }
+            .services { flex-direction: column; }
+            .service { width: 90%; }
+            .portfolio-gallery { max-width: 100%; }
+            header, .hero, section { padding: 2rem 1rem; }
+            .modal-content { width: 90%; max-width: none; }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .services { justify-content: space-between; }
+            .service { width: 45%; }
+        }
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366; /* Warna hijau WhatsApp */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+.whatsapp-icon {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1); /* Buat ikon putih jika gambar hitam */
+}
+
+/* Responsif untuk mobile */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+    }
+    .whatsapp-icon {
+        width: 25px;
+        height: 25px;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Translation Services</h1>
+        <p>Unlock the Power of Global Communication with Us</p>
+    </header>
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+        <ul id="nav-menu">
+            <li><a href="#home" onclick="smoothScroll('#home')">Beranda</a></li>
+            <li><a href="#services" onclick="smoothScroll('#services')">Layanan</a></li>
+            <li><a href="#portfolio" onclick="smoothScroll('#portfolio')">Portofolio</a></li>
+            <li><a href="#contact" onclick="smoothScroll('#contact')">Kontak</a></li>
+        </ul>
+    </nav>
+    <section id="home" class="hero">
+        <h2>Welcome to Our Translation Services</h2>
+        <p>Spesialis penerjemah website, artikel, subtitle fim dan video, skripsi, serta dokumen bisnis</p>
+        <p>✨ Butuh hasil terjemahan akurat dan alami? Kami siap membantu! ✨
+<pre>Kami menyediakan layanan:</pre>
+<pre>🌐 Bahasa Indonesia → Bahasa Inggris</pre>
+<pre>🌐 Bahasa Inggris → Bahasa Indonesia</pre>
+<pre>💰 Harga mulai dari Rp20.000</pre> 
+<pre>📩 Kirim dokumenmu sekarang dan</pre> 
+<pre>dapatkan hasil terbaik dalam waktu singkat!</pre>
+<pre>📞 WhatsApp: (+62) 831-3507-0365</pre>
+<pre>💼 Dikerjakan oleh penerjemah berpengalaman</pre></p>
+        <a href="#contact" class="btn" onclick="smoothScroll('#contact')">Mulai Sekarang</a>
+    </section>
+    <section id="services">
+        <h2>Layanan Kami</h2>
+        <div class="services">
+            <div class="service">
+                <h3>Website</h3>
+                <p>Terjemahan Website dan Artikel</p>
+            </div>
+            <div class="service">
+                <h3>Film</h3>
+                <p>Subtitle Film dan Video</p>
+            </div>
+            <div class="service">
+                <h3>Bisnis</h3>
+                <p>Dokumen Bisnis dan Pengeditan Bahasa</p>
+            </div>
+        </div>
+    </section>
+    <section id="portfolio">
+        <h2>Portofolio</h2>
+        <p>Lihat proyek terbaru kami:</p>
+        <div class="portfolio-gallery">
+            <div class="slider" id="slider">
+                <div class="slide"><img src="foto translation.jpg" alt="untuk translate" onclick="openModal('foto translation.jpg')"></div>
+                <div class="slide"><img src="foto artikel.jpg" alt="untuk artikel" onclick="openModal('foto artikel.jpg')"></div>
+                <div class="slide"><img src="foto novel.jpg" alt="untuk novelS" onclick="openModal('foto novel.jpg')"></div>
+            </div>
+            <div class="slider-controls">
+                <button onclick="prevSlide()">&#10094;</button>
+                <button onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Hubungi Kami</h2>
+        <p>Email: fitria.badriyani@gmail.com | Whatsapp: (+62) 831-3507-0365</p>
+        <form id="contactForm" onsubmit="return validateForm()">
+            <input type="text" id="name" placeholder="Nama Anda" required>
+            <span class="error" id="nameError">Nama wajib diisi.</span><br><br>
+            <input type="email" id="email" placeholder="Email Anda" required>
+            <span class="error" id="emailError">Email tidak valid.</span><br><br>
+            <textarea id="message" placeholder="Pesan Anda" required></textarea>
+            <span class="error" id="messageError">Pesan wajib diisi.</span><br><br>
+            <button type="submit" class="btn">Kirim</button>
+        </form>
+            Perjanjian Kerja :
+<p>1. Melakukan penerjemahan sesuai dengan tenggat waktu yang telah ditetapkan</p>
+<p>2. Menjaga kerahasiaan isi dokumen yang diterjemahkan</p>
+<p>3. Menyerahkan hasil terjemahan dalam format dan waktu yang disepakati</p>
+<p>4. Apabila terjadi keterlambatan pengerjaan yang disebabkan oleh Penyedia Jasa,</p>
+<p>maka Klien berhak menerima potongan harga (diskon) sebesar 50% dari total biaya jasa.</p>
+<p>Namun, keterlambatan yang terjadi akibat revisi tambahan, perubahan mendadak,</p>
+<p>atau keterlambatan pengiriman dokumen dari Klien tidak menjadi tanggung jawab Penyedia Jasa</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Translation Services by PT. Talk2MeLater</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    <script>
+        // Toggle menu
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+
+        // Smooth scroll
+        function smoothScroll(target) {
+            document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+        document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+        // Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function showSlide(index) {
+            document.getElementById('slider').style.transform = `translateX(-${index * 100}%)`;
+        }
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        setInterval(nextSlide, 3000); // Auto slide every 3s
+
+        // Modal
+        function openModal(src) {
+            document.getElementById('imageModal').style.display = 'block';
+            document.getElementById('modalImage').src = src;
+        }
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('imageModal')) {
+                closeModal();
+            }
+        }
+
+        // Form validation
+        function validateForm() {
+            let valid = true;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            document.getElementById('nameError').style.display = 'none';
+            document.getElementById('emailError').style.display = 'none';
+            document.getElementById('messageError').style.display = 'none';
+            if (!name) {
+                document.getElementById('nameError').style.display = 'block';
+                valid = false;
+            }
+            if (!email || !/\S+@\S+\.\S+/.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                valid = false;
+            }
+            if (!message) {
+                document.getElementById('messageError').style.display = 'block';
+                valid = false;
+            }
+            if (valid) alert('Pesan terkirim! Kami akan segera menghubungi Anda.');
+            return false; // Prevent actual submit for demo
+        }
+    </script>
+    <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/6283135070365?text=Halo,%20saya%20ingin%20bertanya%20tentang%20jasa%20terjemahan%20Anda." class="whatsapp-float" target="_blank" title="Chat WhatsApp">
+    <img src="whatsapp-icon.png" alt="WhatsApp Chat" class="whatsapp-icon">
+    <!-- Atau gunakan Font Awesome: <i class="fab fa-whatsapp whatsapp-icon"></i> -->
+</a>
+</body>
+</html>
