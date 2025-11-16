@@ -15,13 +15,13 @@
         #nav-menu a:hover { color: #7D47A4; }
         .hero { background: linear-gradient(135deg, #f4f4f4, #e0f7fa); padding: 4rem 2rem; text-align: center; animation: fadeIn 1s ease-in; }
         .btn { background-color: #7D47A4; color: white; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 5px; display: inline-block; transition: all 0.3s; }
-        .btn:hover { background-color: #45a049; transform: scale(1.05); }
+        .btn:hover { background-color: #7a184e; transform: scale(1.05); }
         section { padding: 3rem 2rem; text-align: center; opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
         section.visible { opacity: 1; transform: translateY(0); }
-        .services { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 2rem; }
-        .service { width: 30%; min-width: 250px; margin: 1rem; padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .services { background: linear-gradient(135deg, #f4f4f4, #e0f7fa); display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 2rem; }
+        .service { background: linear-gradient(135deg, #f4f4f4, #e0f7fa); width: 30%; min-width: 250px; margin: 1rem; padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.3s; }
         .service:hover { transform: translateY(-5px); }
-        .portfolio-gallery { position: relative; overflow: hidden; width: 100%; max-width: 800px; margin: 0 auto; }
+        .testimoni-gallery { background: linear-gradient(135deg, #f4f4f4, #e0f7fa); position: relative; overflow: hidden; width: 100%; max-width: 800px; margin: 0 auto; }
         .slider { display: flex; transition: transform 0.5s ease; }
         .slide { min-width: 100%; }
         .slide img { width: 70%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); cursor: pointer; }
@@ -40,18 +40,18 @@
         .close:hover { color: #bbb; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         /* Media Queries */
-        @media (max-width: 200px) {
+        @media (max-width: 768px) {
             .hamburger { display: block; }
-            #nav-menu { display: none; flex-direction: column; position: absolute; top: 75%; left: 0; width: 75%; background-color: #333; padding: 1rem 0; }
+            #nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background-color: #333; padding: 1rem 0; }
             #nav-menu.active { display: flex; }
             #nav-menu li { margin: 0.5rem 0; text-align: center; }
             .services { flex-direction: column; }
-            .service { width: 70%; }
-            .portfolio-gallery { max-width: 70%; }
+            .service { width: 90%; }
+            .testimoni-gallery { max-width: 100%; }
             header, .hero, section { padding: 2rem 1rem; }
-            .modal-content { width: 80%; max-width: none; }
+            .modal-content { width: 90%; max-width: none; }
         }
-        @media (min-width: 200px) and (max-width: 400px) {
+        @media (min-width: 769px) and (max-width: 1024px) {
             .services { justify-content: space-between; }
             .service { width: 45%; }
         }
@@ -101,6 +101,7 @@
 </head>
 <body>
     <header>
+
         <h1>Translation Services</h1>
         <p>Unlock the Power of Global Communication with Us</p>
     </header>
@@ -109,7 +110,7 @@
         <ul id="nav-menu">
             <li><a href="#home" onclick="smoothScroll('#home')">Beranda</a></li>
             <li><a href="#services" onclick="smoothScroll('#services')">Layanan</a></li>
-            <li><a href="#portfolio" onclick="smoothScroll('#portfolio')">Portofolio</a></li>
+            <li><a href="#testimoni" onclick="smoothScroll('#testimoni')">Testimoni</a></li>
             <li><a href="#contact" onclick="smoothScroll('#contact')">Kontak</a></li>
         </ul>
     </nav>
@@ -120,7 +121,7 @@
 <pre>Kami menyediakan layanan:</pre>
 <pre>🌐 Bahasa Indonesia → Bahasa Inggris</pre>
 <pre>🌐 Bahasa Inggris → Bahasa Indonesia</pre>
-<pre>💰 Harga mulai dari Rp20.000</pre> 
+<pre>💰 Harga mulai dari Rp 5.000</pre> 
 <pre>📩 Kirim dokumenmu sekarang dan</pre> 
 <pre>dapatkan hasil terbaik dalam waktu singkat!</pre>
 <pre>📞 WhatsApp: (+62) 831-3507-0365</pre>
@@ -144,14 +145,15 @@
             </div>
         </div>
     </section>
-    <section id="portfolio">
-        <h2>Portofolio</h2>
-        <p>Lihat proyek terbaru kami:</p>
-        <div class="portfolio-gallery">
+    <section id="testimoni">
+        <h2>Testimoni</h2>
+        <p>Lihat testimoni terbaru kami:</p>
+        <div class="testimoni-gallery">
             <div class="slider" id="slider">
-                <div class="slide"><img src="foto translation.jpg" alt="untuk translate" onclick="openModal('foto translation.jpg')"></div>
-                <div class="slide"><img src="foto artikel.jpg" alt="untuk artikel" onclick="openModal('foto artikel.jpg')"></div>
-                <div class="slide"><img src="foto novel.jpg" alt="untuk novelS" onclick="openModal('foto novel.jpg')"></div>
+                <div class="slide"><img src="foto testimoni1.jpg" alt="testimoni Risma" onclick="openModal('foto testimoni1.jpg')"></div>
+                <div class="slide"><img src="foto testimoni2.jpg" alt="testimoni Unair" onclick="openModal('foto testimoni2.jpg')"></div>
+                <div class="slide"><img src="foto testimoni3.jpg" alt="testimoni Unimed" onclick="openModal('foto testimoni3.jpg')"></div>
+                <div class="slide"><img src="foto testimoni4.jpg" alt="testimoni Winda" onclick="openModal('foto testimoni4.jpg')"></div>
             </div>
             <div class="slider-controls">
                 <button onclick="prevSlide()">&#10094;</button>
