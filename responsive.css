@@ -1,0 +1,116 @@
+/* Untuk Tablet */
+@media all and (max-width: 1024px) {
+  .lesson {
+    width: 50%;
+    margin-bottom: 50px;
+  }
+  
+  .top-wrapper h1 {
+    font-size: 32px;
+  }
+  
+  .heading h2 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  .slide {
+    width: 1250px;
+    height: 650px;
+  }
+
+  }
+  
+  /* Untuk Smartphone */
+  @media all and (max-width: 670px) {
+    .lesson {
+      width: 100%;
+    }
+    
+    .header {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .header-right a {
+      font-size: 10px;
+    }
+    footer {
+      text-align: center;
+    }
+    
+    .btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    
+    .top-wrapper {
+      text-align: center;
+    }
+    .bottom-wrapper {
+      text-align: center;
+      width: 100%;
+    }
+    
+    .menu-icon {
+      display: block;
+    }
+    .top-wrapper h1 {
+      font-size: 30px;
+      text-align: left;
+    }
+    
+    .top-wrapper p {
+      font-size: 20px;
+      text-align: left;
+    }
+    .structure img{
+      width: 100%;
+    }
+    .contack{
+      width: 30%;
+    }
+    footer {
+      padding-top: 10px;
+      width: 100%;
+      height: 100%;
+      float: left;
+    }
+    footer img{
+      width: 50%;
+      height: 50%;
+    }
+    footer p {
+      padding-bottom: 20px;
+    }
+    .nav-ico {
+      display: block;
+    }
+
+    .menu-icon {
+      display: block;
+      float:left;
+    }
+    .sliders{
+      text-align: center;
+      width: 100%;
+      font-size: 10px;
+    }
+    .slide img {
+      width: 100%;
+      height: 100%;
+    }
+    .profile-wrapper {
+      width: 100%;
+      height: 3060px;
+    }
+    .profile {
+      width: 100%;
+    }
+    .message-wrapper {
+      width: 100%;
+      padding-top: 60px;
+    }
+    .message-wrapper h2 {
+      padding-bottom: 40px;
+    }
+  }
