@@ -1,12 +1,37 @@
 // Toggle menu
     function toggleMenu() {
-        document.getElementById('nav-menu').classList.toggle('active');
+        const navMenu = document.getElementById('nav-menu');
+        navMenu.classList.toggle('active');
     }
 
 // Smooth scroll
     function smoothScroll(target) {
-        document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+        const element = document.querySelector(target);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            // Close mobile menu after clicking a link
+            const navMenu = document.getElementById('nav-menu');
+            if (navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        }
     }
+
+// Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const navMenu = document.getElementById('nav-menu');
+        const hamburger = document.querySelector('.hamburger');
+        const navbar = document.querySelector('.navbar');
+        
+        if (navMenu && hamburger && navbar) {
+            const isClickInsideNav = navbar.contains(event.target);
+            const isClickOnHamburger = hamburger.contains(event.target);
+            
+            if (!isClickInsideNav && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        }
+    });
 
 // Intersection Observer for animations
     const observer = new IntersectionObserver((entries) => {
