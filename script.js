@@ -1,12 +1,37 @@
 // Toggle menu
     function toggleMenu() {
-        document.getElementById('nav-menu').classList.toggle('active');
+        const navMenu = document.getElementById('nav-menu');
+        navMenu.classList.toggle('active');
     }
 
 // Smooth scroll
     function smoothScroll(target) {
-        document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+        const element = document.querySelector(target);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            // Close mobile menu after clicking a link
+            const navMenu = document.getElementById('nav-menu');
+            if (navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        }
     }
+
+// Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const navMenu = document.getElementById('nav-menu');
+        const hamburger = document.querySelector('.hamburger');
+        const navbar = document.querySelector('.navbar');
+        
+        if (navMenu && hamburger && navbar) {
+            const isClickInsideNav = navbar.contains(event.target);
+            const isClickOnHamburger = hamburger.contains(event.target);
+            
+            if (!isClickInsideNav && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        }
+    });
 
 // Intersection Observer for animations
     const observer = new IntersectionObserver((entries) => {
@@ -20,19 +45,45 @@
 
 // Slider
     let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
+    let slides = [];
+    let autoSlideInterval;
+    
+    function initSlider() {
+        slides = document.querySelectorAll('.slide');
+        if (slides.length > 0) {
+            showSlide(0);
+            // Auto slide every 3s
+            autoSlideInterval = setInterval(nextSlide, 3000);
+        }
+    }
+    
     function showSlide(index) {
-        document.getElementById('slider').style.transform = `translateX(-${index * 100}%)`;
+        const slider = document.getElementById('slider');
+        if (slider) {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+        }
     }
+    
     function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
+        if (slides.length > 0) {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
     }
+    
     function prevSlide() {
-        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-        showSlide(currentSlide);
+        if (slides.length > 0) {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
     }
-    setInterval(nextSlide, 3000); // Auto slide every 3s
+    
+    // Initialize slider when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSlider);
+    } else {
+        initSlider();
+    }
 
 // Modal
     function openModal(src) {
