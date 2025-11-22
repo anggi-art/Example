@@ -35,8 +35,6 @@ body {
 
 .header-left img {
     height: 60px;
-    width: auto;
-    transition: height 0.3s ease;
 }
 
 .navdiv {
