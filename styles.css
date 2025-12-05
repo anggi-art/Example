@@ -320,7 +320,7 @@ section p {
     margin: 2rem auto;
 }
 
-.project-slider {
+.projectSlider {
     display: flex;
     transition: transform 0.5s ease;
 }

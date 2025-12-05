@@ -70,8 +70,22 @@
             showSlide(currentSlide);
         }
     }
+
+    function nextProjectSlide() {
+        if (slides.length > 0) {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+    }
     
     function prevSlide() {
+        if (slides.length > 0) {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+    }
+
+    function prevProjectSlide() {
         if (slides.length > 0) {
             currentSlide = (currentSlide - 1 + slides.length) % slides.length;
             showSlide(currentSlide);
