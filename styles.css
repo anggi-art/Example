@@ -306,6 +306,69 @@ section p {
     transform: scale(1.1);
 }
 
+/* ===== PROJECT SECTION ===== */
+#project {
+    background: linear-gradient(135deg, #f4f4f4, #e0f7fa);
+    padding: 3rem 1.5rem;
+}
+
+.project-gallery {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.project-slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.project-slide {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.project-slide img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.project-slide img:hover {
+    transform: scale(1.02);
+}
+
+.project-slider-controls {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.project-slider-controls button {
+    background: #7D47A4;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    margin: 0 0.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.project-slider-controls button:hover {
+    background: #5a2f7a;
+    transform: scale(1.1);
+}
+
 /* ===== AGREEMENT SECTION ===== */
 .agreement-section {
     background: #f9f9f9;
